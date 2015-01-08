@@ -1,0 +1,31 @@
+FORMAT: 1A
+
+# MockAPI
+A mock up to see what calls are needed by the frontend code
+
+# Group User
+User related resources of the **API**
+
+## Login [/user/login]
+### Authenticate user [POST] 
+
++ Request (application/json)
+
+        { 
+            "login": "foo@example.com",
+            "password": "abc123"
+        }
+
++ Response 200 (application/json)
+
+        { 
+            "_links" : {
+                "self": { "href": "/users/123" }
+            },
+            "id": "123" 
+        }
+
++ Response 403 (application/json)
+
+        { "message": "the credentials supplied are invalid" }
+
