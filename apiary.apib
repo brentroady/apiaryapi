@@ -6,7 +6,7 @@ A mock up to see what calls are needed by the frontend code
 # Group User
 User related resources of the **API**
 
-## Login [/user/login]
+## Login [/login]
 ### Authenticate user [POST] 
 
 + Request (application/json)
@@ -29,3 +29,55 @@ User related resources of the **API**
 
         { "message": "the credentials supplied are invalid" }
 
+
+## User [/user/{id}]
++ Model
+    
+    HAL+JSON representation
+
+    + Body
+    
+            {
+                "_links" : { "self": { "href": "/user/123" } },
+                "id" : "123",
+                "email" : "foo@example.com",
+                "firstName" : "Mickey",
+                "lastName" : "Mouse"
+            }
+
+
+### Get User [GET] 
++ Parameters
+    + id (int, required, '123')
+    
++ Response 200 (application/json)
+
+    [User][]
+    
++ Response 401
+
++ Response 403
+
+
+### Update User [PUT] 
++ Parameters
+    + id (int, required, '123')
+
++ Request (application/json)
+
+        {
+            "email" : "foo@example.com",
+            "firstName" : "Mickey",
+            "lastName" : "Mouse"
+        }
+    
++ Response 200 (application/json)
+
+    [User][]
+    
++ Response 401
+
++ Response 403
+
+    
+    
