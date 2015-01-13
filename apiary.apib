@@ -207,5 +207,72 @@ User related resources of the **API**
 
 + Response 403
 
+## Project contacts [/project/{id}/contacts{?pending}]
++ Parameters
+    + id (int, required) ... project ID
+    + pending (optional) ... including only pending contacts
 
-    
+### List project contacts [GET]
+
++ Response 200 (application/json)
+
+        [{
+            "_links" : { "self": { "href": "/user/123" } },
+            "id" : "123",
+            "email" : "foo@example.com",
+            "firstName" : "Danny",
+            "lastName" : "Tanner",
+            "phone" : "4055551212",
+            "address1" : "1882 Gerard St.",
+            "state" : "CA",
+            "zip" : "94134",
+            "lastLogin" : "2014-12-31T14:43"
+        },
+        {
+            "_links" : { "self": { "href": "/user/456" } },
+            "id" : "456",
+            "email" : "dj@example.com",
+            "firstName" : "D.J.",
+            "lastName" : "Tanner",
+            "phone" : "4055551212",
+            "address1" : "1882 Gerard St.",
+            "state" : "CA",
+            "zip" : "94134",
+            "lastLogin" : "2014-12-31T14:43"
+        },
+        {
+            "_links" : { "self": { "href": "/user/789" } },
+            "id" : "789",
+            "email" : "kgibbler@example.com",
+            "firstName" : "Kimmy",
+            "lastName" : "Gibbler",
+            "phone" : "4055551212",
+            "address1" : "1882 Gerard St.",
+            "state" : "CA",
+            "zip" : "94134",
+            "isPending" : true,
+            "invitationSent" : "2014-12-31T15:31"
+        }]
+
+### Invite contacts to project [POST]
+
++ Request (application/json)
+
+        { 
+            "existing": [
+                "123",
+                "456"
+            ],
+            "new": [
+                "foo@example.com",
+                "bar@example.com"
+            ]
+        }
+
++ Response 200 (application/json)
+
+    [User][]
+
+
+
+
