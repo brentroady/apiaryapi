@@ -89,8 +89,12 @@ User related resources of the **API**
                 "_links" : { "self": { "href": "/user/123" } },
                 "id" : "123",
                 "email" : "foo@example.com",
-                "firstName" : "Mickey",
-                "lastName" : "Mouse"
+                "firstName" : "Danny",
+                "lastName" : "Tanner",
+                "phone" : "4055551212",
+                "address1" : "1882 Gerard St.",
+                "state" : "CA",
+                "zip" : "94134"
             }
 
 
@@ -115,8 +119,12 @@ User related resources of the **API**
 
         {
             "email" : "foo@example.com",
-            "firstName" : "Mickey",
-            "lastName" : "Mouse"
+            "firstName" : "Danny",
+            "lastName" : "Tanner",
+            "phone" : "4055551212",
+            "address1" : "1882 Gerard St.",
+            "state" : "CA",
+            "zip" : "94134"
         }
     
 + Response 200 (application/json)
@@ -127,5 +135,77 @@ User related resources of the **API**
 
 + Response 403
 
+
+## Project Collection [/project]
+
+### List projects [GET]
+
++ Response 200 (application/json)
+
+        [{
+            "_links" : { "self": { "href": "/project/1" } },
+            "id" : "1",
+            "name" : "Project Name #1",
+            "startDate" : "2015-02-14",
+            "finishDate" : "TBD",
+            "documents" : 1000,
+            "workers" : 10,
+            "completionPercentage" : 46
+        },
+        {
+            "_links" : { "self": { "href": "/project/2" } },
+            "id" : "2",
+            "name" : "Project Name #2",
+            "startDate" : "2015-04-01",
+            "finishDate" : "TBD",
+            "documents" : 2000,
+            "workers" : 4,
+            "completionPercentage" : 33
+        },
+        {
+            "_links" : { "self": { "href": "/project/3" } },
+            "id" : "3",
+            "name" : "Project Name #3",
+            "startDate" : "2015-07-04",
+            "finishDate" : "TBD",
+            "documents" : 3000,
+            "workers" : 10,
+            "completionPercentage" : 12
+        }]
+
+
+## Project [/project/{id}]
+
++ Model
     
+    + Body
+    
+            {
+                "_links" : { "self": { "href": "/project/1" } },
+                "id" : "1",
+                "details" : "These are some project details to be displayed in the project description box",
+                "startDate" : "2015-01-01",
+                "workers" : "10",
+                "statistics" : {
+                    "splits" : { complete: 10, total: 100 },
+                    "indexes" : { complete: 5, total: 32 },
+                    "validations" : { complete: 73, total: 100 },
+                    "dc" : { complete: 5, total: 10 },
+                    "percentage" : 80,
+                }
+            }
+
+### Get project [GET] 
++ Parameters
+    + id (int, required, '1')
+    
++ Response 200 (application/json)
+
+    [Project][]
+    
++ Response 401
+
++ Response 403
+
+
     
