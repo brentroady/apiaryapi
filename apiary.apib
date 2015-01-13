@@ -29,6 +29,54 @@ User related resources of the **API**
 
         { "message": "the credentials supplied are invalid" }
 
+## Forgot password [/login/forgot]
+### Forgot password [POST] 
+
++ Request (application/json)
+
+        { 
+            "login": "foo@example.com"
+        }
+
++ Response 200 (application/json)
+
+        { 
+            "success": true,
+            "message": "reset instructions have been sent"
+        }
+
++ Response 401 (application/json)
+
+        { 
+            "success": false,
+            "message": "the email address is not found" 
+        }
+
+## Reset password [/login/reset]
+### Reset password [POST] 
+
++ Request (application/json)
+
+        { 
+            "userID": "123"
+            "token": "xM4BzcKGgzq0LQAyPSPD"
+            "newPassword": "MyNewCoolSecurePassword"
+        }
+
++ Response 200 (application/json)
+
+        { 
+            "success": true,
+            "message": "the password has been updated"
+        }
+
++ Response 401 (application/json)
+
+        { 
+            "success": false,
+            "message": "the password does not meet the complexity requirements" 
+        }
+
 
 ## User [/user/{id}]
 + Model
